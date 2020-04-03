@@ -57,7 +57,7 @@ class Timeline(object):
         #'py3 range 返回可迭代的对象; py2 直接返回list'
         
     def showtime(self):
-        
+        pass
 
         
 
