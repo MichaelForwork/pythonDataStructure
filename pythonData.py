@@ -1,3 +1,21 @@
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+'''
+@File    :   pythonData.py
+@Time    :   2020/04/03 22:05:31
+@Author  :   Mo Linli 
+@Version :   1.0
+@Contact :   Search username = MichaelForwork at github
+@Desc    :   Wheel main function: this file is for me to study data structure.
+
+'''
+
+# here is the beginning of this wheel
+
+
+
+
+
 '''
     时间复杂度  
         机器执行的基本运算 数量是相同的
@@ -8,8 +26,10 @@
     
     文件名用序号来区分
     
+    python 文件自定义模板
 
 '''
+
 
 import timeit
 import tornado
