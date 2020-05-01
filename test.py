@@ -3,20 +3,42 @@ import numbers
 # -*- encoding: utf-8 -*-
 '''
 @File    :   test.py
-@Time    :   2020/04/27 13:46:03
+@Time    :   2020/04/28 21:33:19
 @Author  :   Mo Linli 
 @Version :   1.0
 @Contact :   Search username of MichaelForwork at github
-@Doc    :   
+@Doc    :    单链表的实现
 '''
-# -*-*-*-*-here is the beginning of this wheel-*-*-*-*-
+# -*-*-*-*- here is the beginning of this script -*-*-*-*-
 
-def funcname(parameter_list):
-    pass
-def adfasdf(parameter_list):
-    print('hello')
-    return 0
+class node(object):
+    """节点类型"""
+    def __init__(self):
+        pass
+    
 
-print("I have added pub key.")
+class my_link(object):
+    """
+    单项链表内部数据结构
+    """
 
-print("now I have been new")
+    def __init__(self, parameter_list):
+        self._head = None    # 不可随便访问变量
+        self._next = None   # 不可随便访问变量
+        
+    
+    @staticmethod
+    def isEmpty(self):
+        return self._head == None
+
+    def getLength(self,):
+        """ get length of current link """
+        count = 0
+        cursor = self._head
+        while : 
+            pass
+    
+    
+if __name__ == "__main__":
+    link = my_link()
+    
