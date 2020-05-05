@@ -14,7 +14,7 @@ import inspect
 
 
 def checkAttribute(func):
-    """装饰器"""
+    """装饰器"""        
     print("check attribute............")
     
 

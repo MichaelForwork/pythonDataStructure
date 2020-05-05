@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+'''
+@File    :   main.py
+@Time    :   2020/05/03 20:49:28
+@Author  :   Michael 
+@Version :   1.0
+@Contact :   Search username of MichaelForwork at github
+@Doc    :    
+'''
+# -*-*-*-*- here is the beginning of this script -*-*-*-*-
+
+
+import classtest as ct
+import types
+
+def set_home(self, parameter_list):
+    self.home = parameter_list
+    
+
+if __name__ == "__main__":
+    # student = ct.cccobj("michael")
+    # student.age = 18   
+    # student2 = ct.cccobj("jason")
+
+    # ct.cccobj.set_home = set_home
+
+
+    # student2.birth = 1988
+    # print(student2.birth)
+    # 测试单链表
+    link = ct.Singlelink()
+    for i in range(6):
+        link.append(i)
+    link.addFromHead(9)
+    link.printdata()
+
+    
