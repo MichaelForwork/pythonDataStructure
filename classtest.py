@@ -36,11 +36,11 @@ class Singlelink(object):
             print (self._head._data, end=",")
             self._head = self._head._next
 
-    def length(self, parameter_list)->int:
+    def length(self)->int:
 
         cur = self._head    
         count = 0
-        while not cur._next == None:
+        while not cur == None:
             count += 1 
             cur = cur._next
         return count
@@ -70,6 +70,22 @@ class Singlelink(object):
         return 0
 
     def insert(self, position:int,item:int):
+        cursor = self._head
+        count = 0
+        if not isinstance(item,int):
+            raise ValueError("input is not integer !")
+        new_node = node(item)
+        if position <=0:    # 头部插入
+            self.addFromHead(item)
+        if position >= self.length():
+            self.append(item)
+
+        while count < position:
+            cursor = cursor._next
+            count += 1
+
+        node._next = cursor._next 
+        cursor._next = new_node
         
         
         pass

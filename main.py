@@ -34,5 +34,5 @@ if __name__ == "__main__":
         link.append(i)
     link.addFromHead(9)
     link.printdata()
-
-    
+    link.insert(3,10)
+    link.printdata()
