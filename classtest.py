@@ -32,9 +32,11 @@ class Singlelink(object):
         return self._head == None
 
     def printdata(self, ):
-        while not self._head == None:
-            print (self._head._data, end=",")
-            self._head = self._head._next
+        "不要擅自改动link head"
+        cursor = self._head
+        while not cursor == None:
+            print (cursor._data, end=",")
+            cursor = cursor._next
 
     def length(self)->int:
 
@@ -77,15 +79,15 @@ class Singlelink(object):
         if position <=0:    # 头部插入
             self.addFromHead(item)
             return 0
-        if position >= self.length():
+        if position >= (self.length()):
             self.append(item)
             return 0
-        while count < position:
+        while count < position-1:
             cursor = cursor._next
             count += 1
 
         new_node = node(item)
-        node._next = cursor._next 
+        new_node._next = cursor._next 
         cursor._next = new_node
         return 0 
         

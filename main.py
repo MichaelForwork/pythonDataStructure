@@ -34,5 +34,7 @@ if __name__ == "__main__":
         link.append(i)
     link.addFromHead(9)
     link.printdata()
-    link.insert(3,10)
+    print('\n 链表的长度',link.length())
+    link.insert(5,10)
     link.printdata()
+    print('\n 链表的长度',link.length())
