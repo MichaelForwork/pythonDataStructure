@@ -74,19 +74,20 @@ class Singlelink(object):
         count = 0
         if not isinstance(item,int):
             raise ValueError("input is not integer !")
-        new_node = node(item)
         if position <=0:    # 头部插入
             self.addFromHead(item)
+            return 0
         if position >= self.length():
             self.append(item)
-
+            return 0
         while count < position:
             cursor = cursor._next
             count += 1
 
+        new_node = node(item)
         node._next = cursor._next 
         cursor._next = new_node
-        
+        return 0 
         
         pass
 
