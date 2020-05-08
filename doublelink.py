@@ -9,6 +9,14 @@
 @Doc    :    测试双向链表功能
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
+class node(object):
+    def __init__(self,item):
+        self.__head = None
+        self.__tail = None
+        self.__data = item
 
 class doubleLink(object):
-    pass
+    def __init__(self):
+        self.__head = None
+        self.__tail = None
+        
