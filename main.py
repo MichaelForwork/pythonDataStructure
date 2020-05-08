@@ -6,7 +6,7 @@
 @Author  :   Michael 
 @Version :   1.0
 @Contact :   Search username of MichaelForwork at github
-@Doc    :    
+@Doc    :    测试单链表功能«‘««
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
 

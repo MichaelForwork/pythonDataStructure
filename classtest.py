@@ -95,7 +95,8 @@ class Singlelink(object):
         return 0 
         
     def search(self, item:int)->bool:
-        """ is this item in this singlelink? """
+        """ is this item in this singlelink? 
+        hint : 遍历  + 判断"""
         if not isinstance(item,int
         ):
             raise ValueError("your input is typeerror!")
