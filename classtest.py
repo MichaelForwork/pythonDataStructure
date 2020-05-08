@@ -35,7 +35,7 @@ class Singlelink(object):
         "不要擅自改动link head"
         cursor = self._head
         while not cursor == None:
-            print (cursor._data, end=",")
+            print (cursor._data, end=" ")
             cursor = cursor._next
 
     def length(self)->int:
@@ -47,8 +47,10 @@ class Singlelink(object):
             cur = cur._next
         return count
 
-    def addFromHead(self, item):
-
+    def addFromHead(self, item:int):
+        
+        if not isinstance(item,int):
+            raise ValueError("input type is not int!")
         new_node = node(item)
         new_node._next = self._head
         self._head = new_node
@@ -72,6 +74,7 @@ class Singlelink(object):
         return 0
 
     def insert(self, position:int,item:int):
+
         cursor = self._head
         count = 0
         if not isinstance(item,int):
@@ -91,11 +94,39 @@ class Singlelink(object):
         cursor._next = new_node
         return 0 
         
-        pass
+    def search(self, item:int)->bool:
+        """ is this item in this singlelink? """
+        if not isinstance(item,int
+        ):
+            raise ValueError("your input is typeerror!")
+        cursor = self._head
+        while not cursor == None:
+            if item == cursor._data:
+                return True
+            cursor = cursor._next
+        return False
 
-
-
-
+    def delete(self,item:int):
+        """ delete your item if it exsits and only delete one time
+        ;需要两个cursor,考虑2种特殊情况：1 link 只有1 节点而且就是删除这个节点；
+        ;2 link 有多个节点 而且删除第一个节点; 
+        """
+        
+        if self._head == None : raise SyntaxError("this singlelink is shoter than one!")
+        cursor = self._head
+        preCursor = None
+        while not cursor == None:
+            if cursor._data == item and self._head == cursor:# 情况1+2 
+                self._head = cursor._next
+                return 0
+            elif cursor._data == item:# 常规删除
+                preCursor._next = cursor._next
+                return 0
+            else:#遍历
+                preCursor = cursor
+                cursor = cursor._next
+        
+    
 
 
 class CCC(object):
