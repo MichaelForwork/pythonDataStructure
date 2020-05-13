@@ -6,9 +6,17 @@
 @Author  :   Michael 
 @Version :   1.0
 @Contact :   Search username of MichaelForwork at github
-@Doc    :    测试双向链表功能
+@Doc    :    编辑双向链表的所有功能
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
 
+class doubleNode(object):
+    def __init__(self,item:int):
+        self._head = None
+        self.
+        pass
+    
+    pass
 class doubleLink(object):
     pass
+

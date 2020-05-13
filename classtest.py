@@ -55,7 +55,11 @@ class Singlelink(object):
         new_node._next = self._head
         self._head = new_node
         return 0
-                
+    
+    @staticmethod
+    def houw(parameter_list):
+        pass
+
     def append(self, parameter_list):
         
         if not isinstance(parameter_list, int):
