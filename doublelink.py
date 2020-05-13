@@ -9,6 +9,11 @@
 @Doc    :    编辑双向链表的所有功能
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
+class node(object):
+    def __init__(self,item):
+        self.__head = None
+        self.__tail = None
+        self.__data = item
 
 class doubleNode(object):
     def __init__(self,item:int):
@@ -18,5 +23,7 @@ class doubleNode(object):
     
     pass
 class doubleLink(object):
-    pass
 
+    def __init__(self):
+        self.__head = None
+        self.__tail = None
