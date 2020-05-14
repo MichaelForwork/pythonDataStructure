@@ -13,10 +13,22 @@ import classtest
 
 class doubleNode(object):
     """ADT: double link node """
+    # change private attribute 
     def __init__(self,item:int):
+
         self.__head = None
         self.__tail = None    
         self.__data = item
+        
+    def gethead(self):
+        return self.__head
+
+    def gettail(self):
+        return self.__tail
+    
+    def getdata(self):
+        return self.__data
+
 
 class doubleLink(classtest.Singlelink):
     
