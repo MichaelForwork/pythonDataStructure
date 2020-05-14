@@ -9,6 +9,12 @@
 @Doc    :    测试doublelink
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
+import doublelink
 
 if __name__ == "__main__":
-    pass    # howd thisd document 
+    dlink = doublelink.doubleLink()
+    dlink.addFromHead(12)
+    dlink.printdata()
+    for i in range(6):
+        dlink.append(i)
+    dlink.printdata()

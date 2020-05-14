@@ -29,7 +29,7 @@ class Singlelink(object):
 
     def isempty(self,):
 
-        return self._head == None
+        return self._head is None   # is better than ==
 
     def printdata(self, ):
         "不要擅自改动link head"
@@ -55,10 +55,6 @@ class Singlelink(object):
         new_node._next = self._head
         self._head = new_node
         return 0
-    
-    @staticmethod
-    def houw(parameter_list):
-        pass
 
     def append(self, parameter_list):
         
@@ -78,7 +74,7 @@ class Singlelink(object):
         return 0
 
     def insert(self, position:int,item:int):
-
+        "insert behind the position; position= offset-1"
         cursor = self._head
         count = 0
         if not isinstance(item,int):
@@ -92,7 +88,6 @@ class Singlelink(object):
         while count < position-1:
             cursor = cursor._next
             count += 1
-
         new_node = node(item)
         new_node._next = cursor._next 
         cursor._next = new_node
