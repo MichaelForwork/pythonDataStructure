@@ -6,7 +6,7 @@
 @Author  :   Michael 
 @Version :   1.0
 @Contact :   Search username of MichaelForwork at github
-@Doc    :    实现 class 的基本功能
+@Doc    :    实现 单链表的基本功能
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
 import inspect
@@ -125,9 +125,6 @@ class Singlelink(object):
             else:#遍历
                 preCursor = cursor
                 cursor = cursor._next
-        
-    
-
 
 class CCC(object):
 
@@ -136,9 +133,6 @@ class CCC(object):
     def __init__(self,data:int ):
         self.data = data
         
-
-
-
 class cccobj(CCC):
 
     def __init__(self, parameter_list):

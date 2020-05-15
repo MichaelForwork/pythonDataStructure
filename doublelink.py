@@ -126,9 +126,11 @@ class doubleLink(classtest.Singlelink):
             if curosr.getdata() is item:
                 if curosr.gethead() is  None:    # 删除头节点
                     self._head = curosr.gettail()
+                    if self._head is not None:  # 头节点只有一个node 
+                        self._head.sethead(None)
                 else:
                     curosr.gethead().settail(curosr.gettail())
-                if curosr.gettail() is not None:    # 删除为节点
+                if curosr.gettail() is not None:    # 为节点特殊情况
                     curosr.gettail().sethead(curosr.gethead())
                 return True 
             curosr = curosr.gettail()
