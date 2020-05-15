@@ -42,7 +42,7 @@ class doubleNode(object):
 
 
 class doubleLink(classtest.Singlelink):
-    """继承来自single link """"
+    """继承来自single link """
     
     def length(self)->int:
 
@@ -108,7 +108,28 @@ class doubleLink(classtest.Singlelink):
         new_node.gettail().sethead(new_node) 
         return 0
 
-    def delete(self,position:int):
-        if
-        pass
-    
+    def search(self,item:int )->bool:
+        cursor = self._head
+        while cursor is not None:
+            if cursor.getdata() is item:
+                return True
+            cursor = cursor.gettail()
+        return False
+        
+    def delete(self,item:int)->bool:
+        
+        if self._head is None:
+            return False
+
+        curosr = self._head
+        while curosr is not None:
+            if curosr.getdata() is item:
+                if curosr.gethead() is  None:    # 删除头节点
+                    self._head = curosr.gettail()
+                else:
+                    curosr.gethead().settail(curosr.gettail())
+                if curosr.gettail() is not None:    # 删除为节点
+                    curosr.gettail().sethead(curosr.gethead())
+                return True 
+            curosr = curosr.gettail()
+        return False

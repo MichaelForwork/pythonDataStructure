@@ -24,4 +24,6 @@ if __name__ == "__main__":
     dlink.insert(100,99)
     print("\n")
     dlink.printdata()
-
+    print("\nsearch some item: ",dlink.search(109))
+    print("delete item: ",dlink.delete(44))
+    dlink.printdata()
