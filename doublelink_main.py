@@ -15,6 +15,13 @@ if __name__ == "__main__":
     dlink = doublelink.doubleLink()
     dlink.addFromHead(12)
     dlink.printdata()
-    for i in range(6):
+    for i in range(4):
         dlink.append(i)
+    print("dlink length : ",dlink.length())
+
+    dlink.insert(0,19)
+    dlink.insert(4,44)
+    dlink.insert(100,99)
+    print("\n")
     dlink.printdata()
+
