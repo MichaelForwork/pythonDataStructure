@@ -112,7 +112,8 @@ class Singlelink(object):
         ;2 link 有多个节点 而且删除第一个节点; 
         """
         
-        if self._head == None : raise SyntaxError("this singlelink is shoter than one!")
+        if self._head == None : 
+            raise SyntaxError("this singlelink is shoter than one!")
         cursor = self._head
         preCursor = None
         while not cursor == None:
@@ -125,6 +126,8 @@ class Singlelink(object):
             else:#遍历
                 preCursor = cursor
                 cursor = cursor._next
+
+        return 0
 
 class CCC(object):
 

@@ -6,7 +6,7 @@
 @Author  :   Michael 
 @Version :   1.0
 @Contact :   Search username of MichaelForwork at github
-@Doc    :    single link with circle strucutre
+@Doc    :    single link with circle strucutre // 
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
 import inspect
@@ -15,7 +15,7 @@ import classtest as ct
 class SingleLinkCircleNode(object,):
     
     def __init__(self,data = None):
-        self.__next = self
+        self.__next = self  # circle 
         self.__data = data
     
     @property
@@ -38,11 +38,6 @@ class SingleLinkCircleNode(object,):
 
 class SingleSinkCircle(ct.Singlelink):
 
-    def isempty(self, )->bool:
-        return  self.__head is None
-
-    def __init__(self, ):
-        self.__head = None
     
     @property
     def head(self):
@@ -52,15 +47,38 @@ class SingleSinkCircle(ct.Singlelink):
     def head(self,value):
         self.__head = value 
         return 0
+
+    def isempty(self, )->bool:
+        return  self.__head is None
+
+    def __init__(self, ):
+        self.__head = None
     
     def length(self, )->int:
-
-        count = 0
+        ""
+        if self.isempty():
+            return 0
+        
+        count = 1
         cursor = self.head
-        while cursor != None cursor.next != self.head:
+        
+        while cursor.next != self.head:
             count += 1
             cursor = cursor.next
         return count 
 
-
+    def printdata(self):
+        "遍历+ 打印"
+        if self.isempty():
+            return 0
         
+        cursor = self.head
+        count = 1 
+        while cursor.next != self.head:
+            print ("data number: ",count,"data value: ",cursor.data)
+        return 0
+
+    def addFromHead(self,item:int):
+        if self.isempty():
+            self.head = SingleLinkCircleNode(item)
+        return

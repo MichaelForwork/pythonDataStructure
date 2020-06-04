@@ -20,10 +20,10 @@ if __name__ == "__main__":
     print("dlink length : ",dlink.length())
 
     dlink.insert(0,19)
-    dlink.insert(4,44)
+    dlink.insert(6,44)
     dlink.insert(100,99)
     print("\n")
     dlink.printdata()
-    print("\nsearch some item: ",dlink.search(109))
-    print("delete item: ",dlink.delete(44))
+    print("\nsearch  item: ",dlink.search(109))
+    #print("delete item: ",dlink.delete(44))
     dlink.printdata()

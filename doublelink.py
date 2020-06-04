@@ -62,7 +62,7 @@ class doubleLink(classtest.Singlelink):
 
     def addFromHead(self,item:int):
         
-        if self.isempty():
+        if self.isempty():  # 
             self._head = doubleNode(item)
             return 0
         else:
@@ -87,7 +87,7 @@ class doubleLink(classtest.Singlelink):
             return 0    
     
     def insert(self, position:int, item:int):
-        "insert behind the position;position=offset-1"
+        "insert behind the position ; offset = position-1"
         if not isinstance(item,int):
             raise ValueError("inouttype error!")
         if position <= 0:
@@ -98,10 +98,11 @@ class doubleLink(classtest.Singlelink):
             return 0
         cursor = self._head
         count = 0
-        while count <= position-1:
+        while count < position-1: # 定位到offset 在cursor 之后插入 
             cursor = cursor.gettail()
             count += 1
         new_node = doubleNode(item)
+        # update four link 
         new_node.settail(cursor.gettail())  
         new_node.sethead(cursor)
         cursor.settail(new_node)  
@@ -117,7 +118,7 @@ class doubleLink(classtest.Singlelink):
         return False
         
     def delete(self,item:int)->bool:
-        
+        """delete element ; offset=position-1"""
         if self._head is None:
             return False
 
@@ -132,6 +133,9 @@ class doubleLink(classtest.Singlelink):
                     curosr.gethead().settail(curosr.gettail())
                 if curosr.gettail() is not None:    # 为节点特殊情况
                     curosr.gettail().sethead(curosr.gethead())
-                return True 
+                break 
             curosr = curosr.gettail()
         return False
+
+
+ 

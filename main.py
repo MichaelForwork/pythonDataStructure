@@ -48,4 +48,6 @@ if __name__ == "__main__":
     link.delete(5)
     print("\n是否存在元素:link.search(9)",link.search(5))
     link.printdata()
+    print("ever")
+
     

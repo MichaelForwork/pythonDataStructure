@@ -35,7 +35,8 @@ class my_link(object):
         """ get length of current link """
         count = 0
         cursor = self._head
-        while : 
+        while True:
+            print("show me the code.")
             pass
     
     
