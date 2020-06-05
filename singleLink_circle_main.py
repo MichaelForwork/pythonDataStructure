@@ -13,4 +13,5 @@ import singlelink_circle as sc
 if __name__ == "__main__":
     s = sc.SingleSinkCircle(sc.SingleLinkCircleNode(100))
     s.addFromHead(200)
-    s.printdata()    
+    s.addFromHead(200)
+    s.printdata() 

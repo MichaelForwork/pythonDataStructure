@@ -110,11 +110,11 @@ class Singlelink(object):
     def delete(self,item:int):
         """ delete your item if it exsits and only delete one time
         ;需要两个cursor,考虑2种特殊情况：1 link 只有1 节点而且就是删除这个节点；
-        ;2 link 有多个节点 而且删除第一个节点; 
+        ;2 link 有多个节点 而且删除头节点; 
         """
         
         if self._head == None : 
-            raise SyntaxError("this singlelink is shoter than one!")
+            raise SyntaxError("this singlelink is shorter than one!")
         cursor = self._head
         preCursor = None
         while not cursor == None:
@@ -127,7 +127,6 @@ class Singlelink(object):
             else:#遍历
                 preCursor = cursor
                 cursor = cursor._next
-
         return 0
 
 class CCC(object):

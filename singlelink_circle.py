@@ -77,7 +77,7 @@ class SingleSinkCircle(ct.Singlelink):
             new_node = SingleLinkCircleNode(item)
             self.__head = new_node
             new_node.next = self.__head
-        return
+            return
 
         new_node = SingleLinkCircleNode(item)
         new_node.next = self.__head
@@ -123,7 +123,42 @@ class SingleSinkCircle(ct.Singlelink):
         return             
         
     def deleteByItem(self,item:int):
-        pass
+        """链表的删除需要双指针;
+        特殊情况有3：
+        1 链表只有一个节点
+        2 删除头节点
+        3 删除尾部节点"""
+        if self.isempty():
+            return
+        
+        cursor = self.__head
+        preCursor = None
+        # while 没有考虑删除尾部节点的情况
+        while cursor.next is not self.__head:   
+            # 2 最复杂情况，需要更改尾部节点的指向
+            if cursor.data == item and self.__head == cursor:
+                cursor4Tail = cursor
+                while cursor4Tail.next is not self.__head:
+                    cursor4Tail = cursor4Tail.next
+                self.__head = cursor.next
+                cursor4Tail.next = self.__head
+                break 
+            # 常规删除
+            elif cursor.data == item:
+                preCursor.next = cursor.next
+                break
+            else:
+                preCursor = cursor
+                cursor = cursor.next
+        # 1
+        if cursor.data == item and self.length==1:
+            self.__head = None
+            return
+        # 3 
+        if cursor.data == item and cursor.next == self.__head:
+            preCursor.next = cursor.next
+            cursor.next = None  #释放资源? 
+        return 
 
     def deleteByPosition(self,position:int):
         pass
@@ -134,4 +169,4 @@ class SingleSinkCircle(ct.Singlelink):
             raise ValueError("type of input must be int!")
         cursor = self.__head
         
-        while 
+        pass
