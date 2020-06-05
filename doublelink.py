@@ -9,7 +9,7 @@
 @Doc    :    编辑双向链表的所有功能
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
-import classtest
+import singleLink
 
 class doubleNode(object):
     """ADT: double link node """
@@ -41,7 +41,7 @@ class doubleNode(object):
         self.__data = data
 
 
-class doubleLink(classtest.Singlelink):
+class doubleLink(singleLink.Singlelink):
     """继承来自single link """
     
     def length(self)->int:

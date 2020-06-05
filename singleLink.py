@@ -75,8 +75,7 @@ class Singlelink(object):
 
     def insert(self, position:int,item:int):
         "insert behind the position; position= offset-1"
-        cursor = self._head
-        count = 0
+
         if not isinstance(item,int):
             raise ValueError("input is not integer !")
         if position <=0:    # 头部插入
@@ -85,6 +84,8 @@ class Singlelink(object):
         if position >= (self.length()):
             self.append(item)
             return 0
+        cursor = self._head
+        count = 0
         while count < position-1:
             cursor = cursor._next
             count += 1
