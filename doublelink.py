@@ -19,26 +19,30 @@ class doubleNode(object):
         self.__head = None
         self.__tail = None    
         self.__data = item
-        
-    def gethead(self):
+
+    @property
+    def head(self):
         return self.__head
 
-    def gettail(self):
+    @head.setter
+    def head(self,item):
+        self.__head = item
+
+    @property
+    def tail(self):
         return self.__tail
-    
-    def getdata(self):
+
+    @tail.setter
+    def tail(self,item):
+        self.__tail = item
+
+    @property
+    def data(self):
         return self.__data
 
-    def sethead(self, head):
-        self.__head = head 
-        return 0
-    
-    def settail(self,tail):
-        self.__tail = tail
-        return 0
-
-    def setdata(self,data):
-        self.__data = data
+    @data.setter
+    def data(self, item):
+        self.__data = item 
 
 
 class doubleLink(singleLink.Singlelink):
@@ -68,7 +72,7 @@ class doubleLink(singleLink.Singlelink):
         else:
             new_node = doubleNode(item)
             self._head.sethead(new_node) 
-            new_node.settail(self._head)
+            new_node.tail = (self._head)
             self._head = new_node
         return 0
     
@@ -82,7 +86,7 @@ class doubleLink(singleLink.Singlelink):
             while not cursor.gettail() is None:
                 cursor = cursor.gettail()
             new_node = doubleNode(item)
-            new_node.sethead(cursor) 
+            new_node.head = (cursor) 
             cursor.settail(new_node)
             return 0    
     
@@ -103,10 +107,10 @@ class doubleLink(singleLink.Singlelink):
             count += 1
         new_node = doubleNode(item)
         # update four link 
-        new_node.settail(cursor.gettail())  
-        new_node.sethead(cursor)
+        new_node.tail = (cursor.gettail())  
+        new_node.head = (cursor)
         cursor.settail(new_node)  
-        new_node.gettail().sethead(new_node) 
+        new_node.tail.head = (new_node) 
         return 0
 
     def search(self,item:int )->bool:
