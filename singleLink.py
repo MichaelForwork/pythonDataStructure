@@ -127,28 +127,4 @@ class Singlelink(object):
             else:#遍历
                 preCursor = cursor
                 cursor = cursor._next
-        return 0
-
-class CCC(object):
-
-    data = None 
-    
-    def __init__(self,data:int ):
-        self.data = data
-        
-class cccobj(CCC):
-
-    def __init__(self, parameter_list):
-        self.name = parameter_list
-
-
-    @property
-    def birth(self):
-        return self.birth
-
-    @birth.setter
-    def birth(self, parameter_list):
-        if not isinstance(parameter_list, int):
-            raise ValueError("input type must be int!")
-        else:
-            self.birth = parameter_list
+        return 0   

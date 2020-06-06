@@ -11,7 +11,7 @@
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
 
 
-import classtest as ct
+import singleLink as ct
 import types
 
 def set_home(self, parameter_list):
