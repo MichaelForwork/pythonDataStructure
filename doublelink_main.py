@@ -14,10 +14,9 @@ import doublelink
 if __name__ == "__main__":
     dlink = doublelink.doubleLink()
     dlink.addFromHead(12)
-    dlink.printdata()
     for i in range(4):
         dlink.append(i)
-    print("dlink length : ",dlink.length())
+    print("dlink length : ",dlink.length()) # = 5
 
     dlink.insert(0,19)
     dlink.insert(6,44)
@@ -25,5 +24,4 @@ if __name__ == "__main__":
     print("\n")
     dlink.printdata()
     print("\nsearch  item: ",dlink.search(109))
-    #print("delete item: ",dlink.delete(44))
-    dlink.printdata()
+    #print("delete item: ",dlink.delete(44))    
