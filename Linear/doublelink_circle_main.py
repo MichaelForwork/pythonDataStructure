@@ -6,7 +6,7 @@
 @Author  :   Michael 
 @Version :   1.0
 @Contact :   Search username of MichaelForwork at github
-@Doc    :    测试双向循环链表功能 // 很可惜没有一次通过
+@Doc    :    测试双向循环链表功能 // 已经测试完成
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
 
@@ -22,4 +22,4 @@ if __name__ == "__main__":
     dl.deleteByItem(14)
     dl.deleteByPosition(-9)
     print("删除某些元素：",dl.searchByItem(12))
-    dl.printData()
+    dl.printData()  #

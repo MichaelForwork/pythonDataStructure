@@ -199,5 +199,8 @@ class DoubleLinkCircle(object):
             if cursor.data == item:
                 return True
             else:
-                return False 
+                return False
 
+    def shwo(self, parameter_list):
+        
+        raise NotImplementedError
