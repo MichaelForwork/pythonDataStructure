@@ -13,24 +13,30 @@ import numpy
 
 class Stack(object):
 
-   def __init__(self, parameter_list=None):
-       self.__list = []
+    def __init__(self, parameter_list=None):
+       self.__list =[]  # private list 
 
     def push(self,item:int):
         '''
-        insert an item onto the stack'''
-        pass
+        insert an item onto the stack
+        '''
+        
+        self.__list.append(item)    # 尾部添加的时间复杂度是 O 1
 
     def peek(self,):
-        pass
+        if self.__list:
+            return self.__list[-1]
+        else:
+            return None
+            
 
     def size(self, ):
-        pass
+        return len(self.__list)
 
-    def pop(self, parameter_list:int):
-        
-        pass
+    def pop(self, ):
+        pop = self.__list[-1]
+        self.__list = self.__list[:-1]
+        return pop
 
     def isEmpty(self, parameter_list=None):
-        
-        pass
+        return self.__list==[]  # [] "" 0 {} () == None

@@ -11,3 +11,10 @@
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
 import stack as st
 
+if __name__ == "__main__":
+    s = st.Stack()
+    for i in range(5):
+        s.push(i)
+
+    while not s.isEmpty():
+        print(s.pop(),"+",s.size())
