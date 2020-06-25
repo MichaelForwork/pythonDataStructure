@@ -10,13 +10,12 @@
 '''
 # -*-*-*-*- here is the beginning of this script -*-*-*-*-
 import inspect
-import singleLink as ct
 
 
-class SingleLinkCircleNode(object):
+class SingleCircularListNode(object):
 
     def __init__(self, data=None):
-        self.__next = None  # circle
+        self.__next = None  
         self.__data = data
 
     @property
@@ -38,35 +37,43 @@ class SingleLinkCircleNode(object):
         return 0
 
 
-class SingleSinkCircle(ct.Singlelink):
+class SingleCircularList(object):
 
     def __init__(self, node=None):
         self.__head = node
         if node:    #
             self.__head.next = self.__head
 
-    def isempty(self, ):
-        return self.__head == None
+    @property
+    def head(self):
+        return self.__head
+
+    @head.setter
+    def head(self,head):
+        self.__head = head 
+    
+    def isempty(self, )->bool:
+        return self.head == None
 
     def length(self, ) -> int:
         """get length"""
         if self.isempty():
             return 0
-        count = 1
-        cursor = self.__head
-        while cursor.next != self.__head:
+        count = 0
+        cursor = self.head
+        while cursor.next is not  self.head:
             count += 1
             cursor = cursor.next
-        return count
+        return count+1
 
     def printdata(self,):
 
         if self.isempty():
-            print("is empty!")
+            print("there is empty!")
             return
 
-        cursor = self.__head
-        while cursor.next != self.__head:
+        cursor = self.head
+        while cursor.next != self.head:
             print('data: ', cursor.data)
             cursor = cursor.next
         print('data: ', cursor.data)
@@ -77,43 +84,31 @@ class SingleSinkCircle(ct.Singlelink):
         1 空链表
         2 需要更改尾部节点的next指向，"""
         if self.isempty():
-            new_node = SingleLinkCircleNode(item)
-            self.__head = new_node
-            new_node.next = self.__head
+            new_node = SingleCircularListNode(item)
+            self.head = new_node
+            new_node.next = self.head
             return
-
-        """方法1 ： 需要首先遍历到结尾，把结尾节点的next 指向新节点；
-        方法2 ： 如果是先添加节点再遍历，那么cursor的起点就不应该从self.head开始"""
-        # cursor = self.__head
-        # while cursor.next != self.__head: # 注意这里的判断条件
-        #     cursor = cursor.next
-        # new_node = SingleLinkCircleNode(item)
-        # cursor.next = new_node
-        # new_node.next = self.__head
-        # self.__head = new_node
-        # return
-        new_node = SingleLinkCircleNode(item)
-        new_node.next = self.__head
-        self.__head = new_node
-        cursor = new_node.next
-        while cursor.next is not new_node.next:
+        new_node = SingleCircularListNode(item)
+        cursor = self.head
+        while cursor.next is not self.head:
             cursor = cursor.next
-        cursor.next = new_node
+        new_node.next = self.head
+        self.head = new_node
+        cursor.next = self.head
         return
 
     def append(self, item: int):
         """难度要略微低于addfromhead"""
         if self.isempty():
-            new_node = SingleLinkCircleNode(item)
-            self.__head = new_node
-            new_node.next = self.__head
+            self.addFromHead(item)
+            return
 
-        cursor = self.__head
-        while cursor.next != self.__head:
+        cursor = self.head
+        while cursor.next != self.head:
             cursor = cursor.next
-        new_node = SingleLinkCircleNode(item)
+        new_node = SingleCircularListNode(item)
         cursor.next = new_node
-        new_node.next = self.__head
+        new_node.next = self.head
         return
 
     def insert(self, position: int, item: int):
@@ -127,11 +122,11 @@ class SingleSinkCircle(ct.Singlelink):
             self.append(item)
             return
         count = 0
-        cursor = self.__head
+        cursor = self.head
         while count < (position-1):
             cursor = cursor.next
             count += 1
-        new_node = SingleLinkCircleNode(item)
+        new_node = SingleCircularListNode(item)
         new_node.next = cursor.next
         cursor.next = new_node
         return
@@ -141,43 +136,50 @@ class SingleSinkCircle(ct.Singlelink):
         self.deleteByItem(item)
         return
 
-    def deleteByItem(self, item: int):
-        """链表的删除需要双指针;
-        特殊情况有3：
-        1 链表只有一个节点
-        2 删除头节点
-        3 删除尾部节点"""
+    def deleteFromHead(self):
         if self.isempty():
+            return 
+        else:
+            point = self.head
+            while point.next is not self.head:
+                point = point.next
+            self.head = self.head.next
+            point.next = self.head
             return
 
-        cursor = self.__head
-        preCursor = None
-        # while 没有考虑删除尾部节点的情况
-        while cursor.next is not self.__head:
-            # 2 最复杂情况，需要更改尾部节点的指向
-            if cursor.data == item and self.__head == cursor:
-                cursor4Tail = cursor
-                while cursor4Tail.next is not self.__head:
-                    cursor4Tail = cursor4Tail.next
-                self.__head = cursor.next
-                cursor4Tail.next = self.__head
-                return
-            # 常规删除
-            elif cursor.data == item:
-                preCursor.next = cursor.next
-                return
-            else:
-                preCursor = cursor
-                cursor = cursor.next
-        # 1
-        if cursor.data == item and self.length == 1:
-            self.__head = None
+    def deleteFromTail(self):
+        if self.isempty():
             return
-        # 3
-        if cursor.data == item and cursor.next == self.__head:
-            preCursor.next = cursor.next
-            cursor.next = None  # 释放资源?
-        return
+        else:
+            point = self.head
+            previous_point = None
+            while point.next is not self.head:
+                previous_point = point
+                point = point.next
+            if not previous_point:
+                self.head =None
+                return
+            previous_point.next = self.head
+            point.next = None
+            return
+
+    def deleteByItem(self, item: int):
+        if self.isempty():
+            return
+        elif self.head.data == item :
+                self.deleteFromHead(item)
+        else:
+            cursor = self.head
+            previous_cursor = None
+            while cursor.next is not self.head :
+                if cursor.data == item :
+                    previous_cursor.next = cursor.next
+                    cursor.next = None
+                previous_cursor = cursor 
+                cursor = cursor.next
+            if cursor.data == item:
+                previous_cursor.next = cursor.next
+                cursor.next = None
 
     def deleteByPosition(self, position: int):
         """根据位置来删除指定元素"""
@@ -185,56 +187,42 @@ class SingleSinkCircle(ct.Singlelink):
             return
 
         if position-1 <= 0:
-            # 删除头节点 ； 1 只有1个节点； 2 有多个节点
-            if self.length() == 1:
-                self.__head = None
-                return
-            else:
-                cursor = self.__head
-                while cursor.next is not self.__head:
-                    cursor = cursor.next
-                self.__head = self.__head.next
-                cursor.next = self.__head
-                return
+            # 删除头节点
+            self.deleteFromHead()
 
         if position >= self.length():
             # 删除尾部节点
-            cursor = self.__head
-            preCursor = None
-            while cursor.next is not self.__head:
-                preCursor = cursor
-                cursor = cursor.next
-            preCursor.next = self.__head
-            cursor.next = None
-            return
-        # 删除中间节点
+            self.deleteFromTail()
+
+        # 在中间删除 
         count = 0
         preCursor = None
-        cursor = self.__head
+        cursor = self.head
         while count != position-1:
             preCursor = cursor
             cursor = cursor.next
             count += 1
         preCursor.next = cursor.next
+        cursor.next = None
         return
 
-    def search(self, item: int) -> int:
+    def search(self, item: int) -> bool:
+        if not isinstance(item,int):
+            raise ValueError(" input must be an Integer!")
         """根据data查找节点是否存在，并且返回position"""
         if self.isempty():
             print("None,because there is no data.")
-            return -1
+            return False
 
-        cursor = self.__head
-        count = 0
-        while cursor.next is not self.__head:
+        cursor = self.head
+        while cursor.next is not self.head:
             if cursor.data == item:
-                return count+1
+                return True
             cursor = cursor.next
-            count += 1
 
         if cursor.data == item:
-            return count+1
+            return True
         else:
-            return -1
+            return False
         
         
