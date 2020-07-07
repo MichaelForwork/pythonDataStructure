@@ -13,14 +13,14 @@
 # 预计时间：3天
 #  冒泡排序 / 选择排序 /  插入排序 / 希尔排序 / 快速排序 / 归并排序 / 桶排序 / 堆排序
 
-def bubble(array:list)->None :
+def bubbleSort(array:list)->None :
     """
     如果list是无序的序列，则一定存在至少一对元素彼此之间是存在一种逆序关系的，只需要把list中所有逆序对给扭转即可实现sorted-list;
     如果在一遍扫描中发生任何反转说明已经有序，不需要再迭代
     O（n^）
     稳定性强"""
     length = len(array)
-    bias = 0
+    bias = 0                # 每次循环与尾部节点的位置偏差
     flag = False            # 判断list 是否存在逆序对
     while not flag:
         for j in range(1,length-bias):
@@ -28,10 +28,10 @@ def bubble(array:list)->None :
                 array[j-1],array[j] = array[j],array[j-1]
                 flag = True
         bias += 1
-        flag = not flag 
+        flag = not flag
 
 def selectionSort(array:list)->None:
-    """有点像冒泡排序的逆过程；
+    """有点像冒泡排序的逆过程，每次选择右边最小的元素交换到左边末尾(append操作)
     每次假设min_index 是当前循环的起始位置,在遍历list中如果有比min_index元素还小的存在，则修改min_index;
     选择环节复杂度很高，交换（插入）环节复杂度很低；
     O(n^2)复杂度
@@ -44,35 +44,52 @@ def selectionSort(array:list)->None:
                 minIndex = j
         if i != minIndex:
             array[minIndex],array[i] = array[i],array[minIndex]
-
+            
 def insert(array:list,item,index:int,end:int)->None:
     """
-    arrary: list that you want to change \n
-    item: element that you want to insert \n
-    index: index of the element \n
-    end: index of the array"""
-    while end > index :             # move emelents back by one step
+    array: 当前需要更改的list  \n
+    item: 需要 插入的元素值 \n
+    index: 需要 后移动的起始下标 \n
+    end: 需要插入的元素对应的下标 """
+    while end > index :             # move all elements of the list one step back 把插入位置之后的所有元素往后移动一格，腾出位置
         array[end] = array[end-1]
         end -= 1
     array[index] = item
 
-
 def inserationSort(array:list)->None:
     """
     每次从后面unsorted-list 中选择第一个元素插入到前面的有序列表中，point向后移动一位；选择复杂度不高，难在插入部分；
-    时间复杂度：
-    稳定性"""
+    时间复杂度：O n^2
+    稳定性
+    特殊情况： 1 是当前list内的最大值，不需要插入; 2 是当前list内的最小值，插入到最前面"""
     if not isinstance(array,list):
         raise ValueError("input must be a list!")
     
     lengthOfArray = len(array)
-    for i in range(1,lengthOfArray):            # 1~n select 
+    for i in range(1, lengthOfArray):            # 1~n select
         j = i-1
-        while j >= 0:                           # 0~n-1 insert 
+        flag = False
+        while j >= 0:                           # 0~n-1 from back to front, linear insert
             if array[i] > array[j]:
-                insert(array,array[i],j+1,i)
+                insert(array, array[i], j+1, i)
+                flag = True
                 break
             j -= 1
+
+        if not flag:                            # 当前list 内的最小值
+            insert(array,array[i],0,i)          # move all elements 
+            
+def inserationSortV2(array:list)->None:
+    """这个版本的插入排序就真的很像冒泡了,每次都把元素往前移动最大距离"""
+    length = len(array)
+    for i in range(1,length):
+        j = i
+        while j >0:
+            if array[j-1] > array[j]:
+                array[j-1],array[j] = array[j],array[j-1]
+                j -= 1
+            else:
+                break
 
 
 def binaryInserationSort(arrary:list)->None:
@@ -87,9 +104,17 @@ def mergeSort(parameter_list):
     """
     pass  
 
+def heapSort(array:list)->None:
+    pass
+
+
+def shellSort(array:list )->None:
+    pass
+
+
 if __name__ == "__main__":
-    li = [1,3,4543,546,34232,2342,23424,234]
+    li = [12,3,4543,546,34232,2342,23424,1,234]
     #selectionSort(li)
-    bubble(li)
+    bubbleSort(li)
     for i in range(len(li)) :
         print("current time",i,li[i])
